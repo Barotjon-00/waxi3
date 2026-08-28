@@ -1,18 +1,30 @@
 /* Design philosophy: “Тёплая плёнка” — romantic editorial, analog texture, asymmetry, and quiet cherry-wine interactions. */
 import { useEffect, useRef, useState } from "react";
 import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
-import photo1 from "../img/1.png";
-import photo2 from "../img/2.png";
-
+const photo1 = "/waxi3/img/1.png";  // Добавьте /waxi3/ перед путём
+const photo2 = "/waxi3/img/2.png";
 
 const heroImage = "/manus-storage/love-letter-hero_fab70ade.jpg";
 const flowerImage = "/manus-storage/pressed-flower_110e9ac2.jpg";
 const markImage = "/manus-storage/three-dots-mark_e926ca0f.png";
 const heroSlides = [
-  { src: heroImage, alt: "Пара сидит рядом в тёплой комнате", caption: "наш момент" },
-  { src: "../img/1.png", alt: "Пара идёт навстречу друг другу", caption: "всегда навстречу" },
-  { src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=1100&q=85", alt: "Розовые цветы", caption: "маленькие радости" },
+  {
+    src: photo1,
+    alt: "Пара сидит рядом в тёплой комнате",
+    caption: "Наш момент",
+  },
+  {
+    src: photo1,
+    alt: "Пара идёт навстречу друг другу",
+    caption: "Всегда навстречу",
+  },
+  {
+    src: photo2,
+    alt: "Наш совместный момент",
+    caption: "Только наши воспоминания",
+  },
 ];
+
 const relationshipStart = new Date("2026-05-24T12:00:00");
 const gallery = [
   { src: heroImage, alt: "Наш тёплый момент", caption: "там, где спокойно" },
