@@ -2,9 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
 
-const heroImage = "/manus-storage/love-letter-hero_fab70ade.jpg";
+const heroImage =  "/waxi3/img/1.png";
 const flowerImage = "/waxi3/img/1.jpg";
-const markImage = "/manus-storage/three-dots-mark_e926ca0f.png";
+const markImage =  "/waxi3/img/2.png";
 const heroSlides = [
   {
     src: "/waxi3/img/1.png",
