@@ -27,7 +27,7 @@ const heroSlides = [
 const relationshipStart = new Date("2026-05-24T12:00:00");
 const gallery = [
   { src: heroImage, alt: "Наш тёплый момент", caption: "там, где спокойно" },
-  { src: "/waxi3/img/3.jpg", alt: "Руки пары", caption: "держать за руку" },
+  { src: "/waxi3/img/3.JPG", alt: "Руки пары", caption: "держать за руку" },
   { src: "/waxi3/img/4.jpg", alt: "Розовые цветы", caption: "маленькие радости" },
 ];
 const defaultPlans = ["Устроить поездку к морю", "Встретить вместе рассвет", "Сходить на концерт", "Посетить новый город"];
