@@ -1,8 +1,10 @@
 /* Design philosophy: “Тёплая плёнка” — romantic editorial, analog texture, asymmetry, and quiet cherry-wine interactions. */
 import { useEffect, useRef, useState } from "react";
 import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
-const photo1 = "/waxi3/img/1.png";  // Добавьте /waxi3/ перед путём
-const photo2 = "/waxi3/img/2.png";
+import photo1 from '@/img/1.png';
+import photo2 from '@/img/2.png';
+import photo3 from '@/img/3.png';  // Добавьте новое фото
+
 
 const heroImage = "/manus-storage/love-letter-hero_fab70ade.jpg";
 const flowerImage = "/manus-storage/pressed-flower_110e9ac2.jpg";
@@ -14,12 +16,12 @@ const heroSlides = [
     caption: "Наш момент",
   },
   {
-    src: photo1,
+    src: photo2,  // Замените на ваше фото
     alt: "Пара идёт навстречу друг другу",
     caption: "Всегда навстречу",
   },
   {
-    src: photo2,
+    src: photo3,  // Ещё одно фото
     alt: "Наш совместный момент",
     caption: "Только наши воспоминания",
   },
