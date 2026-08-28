@@ -27,8 +27,8 @@ const heroSlides = [
 const relationshipStart = new Date("2026-05-24T12:00:00");
 const gallery = [
   { src: heroImage, alt: "Наш тёплый момент", caption: "там, где спокойно" },
-  { src: "https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=85", alt: "Руки пары", caption: "держать за руку" },
-  { src: "https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=85", alt: "Розовые цветы", caption: "маленькие радости" },
+  { src: "/waxi3/img/3.jpg", alt: "Руки пары", caption: "держать за руку" },
+  { src: "/waxi3/img/4.jpg", alt: "Розовые цветы", caption: "маленькие радости" },
 ];
 const defaultPlans = ["Устроить поездку к морю", "Встретить вместе рассвет", "Сходить на концерт", "Посетить новый город"];
 
