@@ -218,7 +218,7 @@ export default defineConfig({
   envDir: path.resolve(import.meta.dirname),
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: '../dist', // Выходим из папки client и кладем сборку в корень репозитория
     emptyOutDir: true,
   },
   server: {
