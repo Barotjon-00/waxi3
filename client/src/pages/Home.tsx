@@ -171,7 +171,7 @@ export default function Home() {
       {confetti && <div className="confetti-layer" aria-hidden="true">{Array.from({ length: 34 }).map((_, i) => <i key={i} style={{ left: `${(i * 31) % 100}%`, animationDelay: `${(i % 9) * 70}ms`, background: i % 2 ? "#8f3d4b" : "#d7a28f" }} />)}</div>}
       <header className="site-header">
         <a className="brand-mark" href="#top" aria-label="На главную"><img src={markImage} alt="" /><span>для двоих</span></a>
-        <p className="header-note">личное письмо · 24.08.2026</p>
+        <p className="header-note">личное письмо · 04.09.2026</p>
         <div className="header-actions"><button className="theme-toggle" onClick={() => setTheme((current) => current === "warm" ? "pastel" : current === "pastel" ? "evening" : "warm")} aria-label="Сменить цветовую тему"><span className={`theme-swatch theme-${theme}`} /> {theme === "warm" ? "теплее" : theme === "pastel" ? "пастель" : "вечер"}</button><a className="header-link" href="#music">наша мелодия <span>↘</span></a></div>
       </header>
 
