@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
 
 const heroImage = "/manus-storage/love-letter-hero_fab70ade.jpg";
-const flowerImage = "/manus-storage/pressed-flower_110e9ac2.jpg";
+const flowerImage = "/waxi3/img/1.jpg";
 const markImage = "/manus-storage/three-dots-mark_e926ca0f.png";
 const heroSlides = [
   {
@@ -17,7 +17,7 @@ const heroSlides = [
     caption: "Всегда навстречу",
   },
   {
-    src: "/waxi3/img/1.png", // Ещё одно фото
+    src: "/waxi3/img/1.jpg", // Ещё одно фото
     alt: "Наш совместный момент",
     caption: "Только наши воспоминания",
   },
