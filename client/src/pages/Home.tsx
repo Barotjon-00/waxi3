@@ -213,7 +213,7 @@ export default function Home() {
           <p className="eyebrow">три месяца — и целая вселенная</p>
           <h1>Три месяца<br /><em>счастья с тобой.</em></h1>
           <p className="intro">Каждый миг с тобой — как маленькое чудо. Ты наполняешь мою жизнь теплом, уютом и бесконечной нежностью.</p>
-         <a className="scroll-cue" href="#letter"><span className="scroll-line" /> читать дальше</a>
+          <a className="scroll-cue" href="#letter"><span className="scroll-line" /> читать дальше</a>
         </div>
         <figure className="hero-photo-wrap">
           <div className="hero-photo-shadow" />
@@ -248,13 +248,26 @@ export default function Home() {
         <img className="flower-art" src={flowerImage} alt="Засушенный цветок на бумаге" />
       </section>
 
-      <section className="counter-section">
-        <div>
-          <p className="eyebrow">мы уже рядом</p>
-          <p className="counter-number">{days}</p>
-          <p className="counter-label">дней вместе</p>
+      <section className="counter-section" style={{ textAlign: 'center', padding: '3rem 0' }}>
+        <div style={{ marginBottom: '2rem' }}>
+          <p className="eyebrow" style={{ fontSize: '0.9rem', letterSpacing: '2px' }}>мы уже рядом</p>
+          <p className="counter-number" style={{ fontSize: '6rem', lineHeight: '1', margin: '1rem 0' }}>{days}</p>
+          <p className="counter-label" style={{ fontSize: '1.1rem', opacity: 0.8 }}>дней настоящего счастья</p>
         </div>
-        <button className="confetti-button" onClick={launchConfetti}><Sparkles size={16} /> устроить маленький праздник</button>
+        <button 
+          className="confetti-button" 
+          onClick={launchConfetti}
+          style={{ 
+            margin: '0 auto', 
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '12px 24px',
+            fontSize: '0.95rem'
+          }}
+        >
+          <Sparkles size={16} /> устроить маленький праздник
+        </button>
       </section>
 
       <section className="gallery-section">
@@ -275,9 +288,9 @@ export default function Home() {
 
       <section className="music-section" id="music">
         <div className="music-copy">
-          <p className="eyebrow">05 / 08 · оставим звук</p>
-          <h2>Включи, когда<br /><em>захочешь улыбнуться.</em></h2>
-          <p>Эти мелодии напоминают мне о тебе. Браузер может потребовать первое касание — кнопка ниже всегда рядом.</p>
+          <p className="eyebrow">05 / 08 · наша музыка</p>
+          <h2>Мелодии, в которых<br /><em>живёт наша любовь.</em></h2>
+          <p>Каждая нота этих песен напоминает мне твою улыбку, твой смех и то чувство, когда ты рядом. Просто нажми play — и я буду с тобой.</p>
         </div>
         <div className="music-player">
           <div className="player-top">
@@ -325,14 +338,39 @@ export default function Home() {
       <section className={`secret-section ${secretOpen ? "is-open" : ""}`}>
         <div className="secret-copy">
           <p className="eyebrow">06 / 08 · только для тебя</p>
-          <h2>У меня есть<br /><em>ещё одно письмо.</em></h2>
-          <p>Оно спрятано здесь. Открой конверт, когда захочешь почувствовать моё тепло.</p>
+          <h2>Здесь спрятано<br /><em>моё сердце.</em></h2>
+          <p>Нажми на конверт, чтобы прочитать то, что я ношу в душе каждый день.</p>
         </div>
-        <button className="envelope" onClick={() => setSecretOpen(!secretOpen)} aria-expanded={secretOpen}>
+        <button 
+          className="envelope" 
+          onClick={() => setSecretOpen(!secretOpen)} 
+          aria-expanded={secretOpen}
+          aria-label={secretOpen ? "Закрыть письмо" : "Открыть письмо"}
+          style={{
+            cursor: 'pointer',
+            transition: 'transform 0.6s ease',
+            transform: secretOpen ? 'rotateX(180deg)' : 'rotateX(0deg)'
+          }}
+        >
           <span className="envelope-flap" />
-          <span className="envelope-paper">Ты — моё самое красивое совпадение во вселенной.<br /><small>И я очень сильно тебя люблю.</small></span>
+          <span className="envelope-paper" style={{
+            opacity: secretOpen ? 1 : 0,
+            transform: secretOpen ? 'translateY(0)' : 'translateY(20px)',
+            transition: 'all 0.5s ease 0.2s'
+          }}>
+            Ты — моё самое красивое совпадение во всей вселенной.<br />
+            <small style={{ marginTop: '1rem', display: 'block', fontSize: '0.95rem' }}>
+              Я люблю тебя больше, чем можно выразить словами.<br />
+              И буду любить всегда. Навсегда твой. ♥
+            </small>
+          </span>
           <span className="envelope-front" />
-          <span className="envelope-seal">♡</span>
+          <span className="envelope-seal" style={{
+            opacity: secretOpen ? 0 : 1,
+            transition: 'opacity 0.3s ease'
+          }}>
+            ♡
+          </span>
         </button>
       </section>
 
@@ -359,7 +397,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* НОВЫЙ 8-Й ПУНКТ С ОЧЕНЬ МИЛЫМИ СЛОВАМИ */}
       <section className="letter-section" style={{ marginTop: '4rem' }}>
         <div className="section-side"><span>08</span><span className="side-rule" /></div>
         <div className="letter-content" style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto' }}>
@@ -372,7 +409,7 @@ export default function Home() {
             Я буду любить тебя сегодня, завтра и всегда.
           </p>
           <div className="signature" style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
-            С любовью от твоего барашка. Я буду любить тебя до самого конца своей жизни<span>♥</span>
+            Бесконечно твой <span>♥</span>
           </div>
         </div>
       </section>
