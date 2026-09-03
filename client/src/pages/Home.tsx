@@ -241,26 +241,22 @@ export default function Home() {
         <img className="flower-art" src={flowerImage} alt="Засушенный цветок на бумаге" />
       </section>
 
-      <section className="counter-section" style={{ textAlign: 'center', padding: '3rem 0' }}>
-        <div style={{ marginBottom: '2rem' }}>
-          <p className="eyebrow" style={{ fontSize: '0.9rem', letterSpacing: '2px' }}>мы уже рядом</p>
-          <p className="counter-number" style={{ fontSize: '6rem', lineHeight: '1', margin: '1rem 0' }}>{days}</p>
-          <p className="counter-label" style={{ fontSize: '1.1rem', opacity: 0.8 }}>дней настоящего счастья</p>
+      <section className="counter-section">
+        <div className="counter-number-block">
+          <p className="eyebrow">мы уже рядом</p>
+          <div className="counter-figure">
+            <span className="counter-number">{days}</span>
+            <span className="counter-heart" aria-hidden="true">♥</span>
+          </div>
+          <p className="counter-label">дней настоящего счастья</p>
+          <p className="counter-since">с 4 июня 2026 года · и это только начало</p>
         </div>
-        <button
-          className="confetti-button"
-          onClick={launchConfetti}
-          style={{
-            margin: '0 auto',
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '8px',
-            padding: '12px 24px',
-            fontSize: '0.95rem'
-          }}
-        >
-          <Sparkles size={16} /> устроить маленький праздник
-        </button>
+        <div className="counter-divider" aria-hidden="true"><span /></div>
+        <div className="counter-action">
+          <button className="confetti-button" onClick={launchConfetti}>
+            <Sparkles size={16} /> устроить маленький праздник
+          </button>
+        </div>
       </section>
 
       <section className="gallery-section">
