@@ -211,9 +211,9 @@ export default function Home() {
         <div className="hero-aside"><span className="vertical-label">три месяца счастья</span><span className="hero-index">01 / 08</span></div>
         <div className="hero-copy">
           <p className="eyebrow">три месяца — и целая вселенная</p>
-          <h1>Три месяца<br /><em>рядом с тобой.</em></h1>
-          <p className="intro">Ты делаешь обычные дни волшебными, а мою жизнь — по-настоящему счастливой. Спасибо, что ты выбрала меня.</p>
-          <a className="scroll-cue" href="#letter"><span className="scroll-line" /> читать дальше</a>
+          <h1>Три месяца<br /><em>счастья с тобой.</em></h1>
+          <p className="intro">Каждый миг с тобой — как маленькое чудо. Ты наполняешь мою жизнь теплом, уютом и бесконечной нежностью.</p>
+         <a className="scroll-cue" href="#letter"><span className="scroll-line" /> читать дальше</a>
         </div>
         <figure className="hero-photo-wrap">
           <div className="hero-photo-shadow" />
@@ -238,12 +238,12 @@ export default function Home() {
         <div className="section-side"><span>02</span><span className="side-rule" /></div>
         <div className="letter-content">
           <p className="eyebrow">если коротко</p>
-          <h2>Спасибо, что<br /><em>ты — моё чудо.</em></h2>
+          <h2>Ты — моё<br /><em>самое большое счастье.</em></h2>
           <div className="letter-columns">
-            <p>За твою улыбку, которая освещает всё вокруг. За то, что с тобой можно быть собой, не боясь быть смешным или слабым. За каждое «доброе утро» и каждое нежное касание.</p>
-            <p>Я не знаю, сколько страниц у нашей истории впереди. Но я точно знаю, что хочу писать её только с тобой.</p>
+            <p>За то, как ты смеёшься и как смотришь на меня. За то, что с тобой я чувствую себя дома, где бы мы ни были. За каждое твоё «я скучаю» и каждую нежность.</p>
+            <p>Наша история только начинается, но я уже знаю: ты — лучшее, что случилось со мной. И я хочу прожить каждую следующую страницу только с тобой.</p>
           </div>
-          <div className="signature">Твой, всем сердцем <span>♥</span></div>
+          <div className="signature">Навсегда твой <span>♥</span></div>
         </div>
         <img className="flower-art" src={flowerImage} alt="Засушенный цветок на бумаге" />
       </section>
@@ -372,7 +372,7 @@ export default function Home() {
             Я буду любить тебя сегодня, завтра и всегда.
           </p>
           <div className="signature" style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
-            Бесконечно твой <span>♥</span>
+            С любовью от твоего барашка. Я буду любить тебя до самого конца своей жизни<span>♥</span>
           </div>
         </div>
       </section>
