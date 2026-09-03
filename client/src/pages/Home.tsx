@@ -393,7 +393,7 @@ export default function Home() {
             Я буду любить тебя сегодня, завтра и всегда.
           </p>
           <div className="signature" style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
-            Бесконечно твой <span>♥</span>
+            C любовью от барашки джони люблю тебя очень сильно <span>♥</span>
           </div>
         </div>
       </section>
