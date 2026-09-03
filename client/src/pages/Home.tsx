@@ -161,7 +161,7 @@ export default function Home() {
   return (
     <main className="love-page">
       {/* Аудио-элемент для вашей музыки. Положите файл music.mp3 в папку client/public/audio/ */}
-      <audio ref={audioRef} src="/waxi3/audio/music.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/waxi3/audio/song.mp3" loop preload="auto" />
 
       {theme === "evening" && <div className="starfield" aria-hidden="true">{Array.from({ length: 48 }).map((_, i) => <i key={i} style={{ left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animationDelay: `${(i % 11) * 180}ms`, animationDuration: `${2.4 + (i % 5) * .7}s` }} />)}</div>}
       {confetti && <div className="confetti-layer" aria-hidden="true">{Array.from({ length: 34 }).map((_, i) => <i key={i} style={{ left: `${(i * 31) % 100}%`, animationDelay: `${(i % 9) * 70}ms`, background: i % 2 ? "#8f3d4b" : "#d7a28f" }} />)}</div>}
