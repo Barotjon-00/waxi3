@@ -30,13 +30,13 @@ const gallery = [
   { src: "/waxi3/img/3.JPG", alt: "Руки пары", caption: "держать за руку" },
   { src: "/waxi3/img/4.jpg", alt: "Розовые цветы", caption: "маленькие радости" },
 ];
-const defaultPlans = ["Устроить поездку к морю", "Встретить вместе рассвет", "Сходить на концерт", "Посетить новый город"];
+const defaultPlans = ["Устроить романтический ужин", "Встретить вместе рассвет", "Сходить на концерт", "Поехать в небольшое путешествие"];
 
 const moments = [
-  { date: "04.06", label: "первая встреча", text: "День, с которого всё стало немного интереснее." },
-  { date: "04.07", label: "первый месяц", text: "Когда обычные дни начали казаться особенными." },
-  { date: "04.08", label: "второй месяц", text: "Когда у нас появились свои слова и маленькие ритуалы." },
-  { date: "сегодня", label: "три месяца", text: "И мне всё ещё хочется узнавать тебя дальше." },
+  { date: "04.06", label: "первая встреча", text: "День, с которого моя жизнь стала намного ярче." },
+  { date: "04.07", label: "первый месяц", text: "Когда обычные дни начали казаться настоящим праздником." },
+  { date: "04.08", label: "второй месяц", text: "Когда у нас появились свои слова, шутки и маленькие ритуалы." },
+  { date: "сегодня", label: "три месяца", text: "И мне всё ещё хочется узнавать тебя каждый день заново." },
 ];
 
 function daysTogether() {
@@ -67,11 +67,10 @@ export default function Home() {
 
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // Плейлист из 3 песен
   const playlist = [
-    { src: "/waxi3/audio/song.mp3", title: "Мелодия 1" },
-    { src: "/waxi3/audio/song1.mp3", title: "Мелодия 2" },
-    { src: "/waxi3/audio/song2.mp3", title: "Мелодия 3" },
+    { src: "/waxi3/audio/song.mp3", title: "Наша мелодия" },
+    { src: "/waxi3/audio/song1.mp3", title: "Для уютных вечеров" },
+    { src: "/waxi3/audio/song2.mp3", title: "Когда скучаю" },
   ];
 
   const [currentTrack, setCurrentTrack] = useState(0);
@@ -198,7 +197,7 @@ export default function Home() {
       {confetti && <div className="confetti-layer" aria-hidden="true">{Array.from({ length: 34 }).map((_, i) => <i key={i} style={{ left: `${(i * 31) % 100}%`, animationDelay: `${(i % 9) * 70}ms`, background: i % 2 ? "#8f3d4b" : "#d7a28f" }} />)}</div>}
 
       <header className="site-header">
-        <a className="brand-mark" href="#top" aria-label="На главную"><img src={markImage} alt="" /><span>для двоих</span></a>
+        <a className="brand-mark" href="#top" aria-label="На главную"><img src={markImage} alt="" /><span>для тебя</span></a>
         <p className="header-note">личное письмо · 04.09.2026</p>
         <div className="header-actions">
           <button className="theme-toggle" onClick={() => setTheme((current) => current === "warm" ? "pastel" : current === "pastel" ? "evening" : "warm")} aria-label="Сменить цветовую тему">
@@ -209,11 +208,11 @@ export default function Home() {
       </header>
 
       <section className="hero" id="top">
-        <div className="hero-aside"><span className="vertical-label">три месяца вместе</span><span className="hero-index">01 / 06</span></div>
+        <div className="hero-aside"><span className="vertical-label">три месяца счастья</span><span className="hero-index">01 / 08</span></div>
         <div className="hero-copy">
-          <p className="eyebrow">маленькая дата, большое чувство</p>
+          <p className="eyebrow">три месяца — и целая вселенная</p>
           <h1>Три месяца<br /><em>рядом с тобой.</em></h1>
-          <p className="intro">Кажется, это совсем немного. Но за это время ты стал(а) моим самым тёплым «как ты?» в конце дня.</p>
+          <p className="intro">Ты делаешь обычные дни волшебными, а мою жизнь — по-настоящему счастливой. Спасибо, что ты выбрала меня.</p>
           <a className="scroll-cue" href="#letter"><span className="scroll-line" /> читать дальше</a>
         </div>
         <figure className="hero-photo-wrap">
@@ -239,12 +238,12 @@ export default function Home() {
         <div className="section-side"><span>02</span><span className="side-rule" /></div>
         <div className="letter-content">
           <p className="eyebrow">если коротко</p>
-          <h2>Спасибо, что<br /><em>ты — это ты.</em></h2>
+          <h2>Спасибо, что<br /><em>ты — моё чудо.</em></h2>
           <div className="letter-columns">
-            <p>За лёгкость, с которой рядом с тобой можно быть собой. За смех в самые неожиданные моменты. За то, что даже простая прогулка превращается в маленькое приключение.</p>
-            <p>Я не знаю, сколько страниц у нашей истории впереди. Но эту — про три месяца — я точно хочу сохранить.</p>
+            <p>За твою улыбку, которая освещает всё вокруг. За то, что с тобой можно быть собой, не боясь быть смешным или слабым. За каждое «доброе утро» и каждое нежное касание.</p>
+            <p>Я не знаю, сколько страниц у нашей истории впереди. Но я точно знаю, что хочу писать её только с тобой.</p>
           </div>
-          <div className="signature">твой человек <span>♥</span></div>
+          <div className="signature">Твой, всем сердцем <span>♥</span></div>
         </div>
         <img className="flower-art" src={flowerImage} alt="Засушенный цветок на бумаге" />
       </section>
@@ -259,7 +258,7 @@ export default function Home() {
       </section>
 
       <section className="gallery-section">
-        <div className="section-heading"><span className="eyebrow">несколько кадров</span><span className="section-number">04 / 07</span></div>
+        <div className="section-heading"><span className="eyebrow">несколько кадров</span><span className="section-number">04 / 08</span></div>
         <div className="gallery-grid">
           {gallery.map((item, i) => (
             <figure className={`gallery-item gallery-${i + 1}`} key={item.src} onClick={() => setGalleryOpen(i)} role="button" tabIndex={0} onKeyDown={(event) => { if (event.key === "Enter" || event.key === " ") setGalleryOpen(i); }}>
@@ -276,9 +275,9 @@ export default function Home() {
 
       <section className="music-section" id="music">
         <div className="music-copy">
-          <p className="eyebrow">05 / 06 · оставим звук</p>
+          <p className="eyebrow">05 / 08 · оставим звук</p>
           <h2>Включи, когда<br /><em>захочешь улыбнуться.</em></h2>
-          <p>Тихая импровизация будет звучать фоном. Браузер может потребовать первое касание — кнопка ниже всегда рядом.</p>
+          <p>Эти мелодии напоминают мне о тебе. Браузер может потребовать первое касание — кнопка ниже всегда рядом.</p>
         </div>
         <div className="music-player">
           <div className="player-top">
@@ -325,13 +324,13 @@ export default function Home() {
 
       <section className={`secret-section ${secretOpen ? "is-open" : ""}`}>
         <div className="secret-copy">
-          <p className="eyebrow">06 / 06 · только для тебя</p>
+          <p className="eyebrow">06 / 08 · только для тебя</p>
           <h2>У меня есть<br /><em>ещё одно письмо.</em></h2>
-          <p>Оно спрятано здесь. Открой конверт, когда будешь готов(а).</p>
+          <p>Оно спрятано здесь. Открой конверт, когда захочешь почувствовать моё тепло.</p>
         </div>
         <button className="envelope" onClick={() => setSecretOpen(!secretOpen)} aria-expanded={secretOpen}>
           <span className="envelope-flap" />
-          <span className="envelope-paper">Ты — моё самое красивое совпадение.<br /><small>И я очень тебя люблю.</small></span>
+          <span className="envelope-paper">Ты — моё самое красивое совпадение во вселенной.<br /><small>И я очень сильно тебя люблю.</small></span>
           <span className="envelope-front" />
           <span className="envelope-seal">♡</span>
         </button>
@@ -339,9 +338,9 @@ export default function Home() {
 
       <section className="plans-section">
         <div className="plans-intro">
-          <p className="eyebrow">07 / 07 · впереди</p>
-          <h2>Наши<br /><em>планы.</em></h2>
-          <p>Отметим то, что обязательно сделаем вместе. Маленькие мечты тоже считаются.</p>
+          <p className="eyebrow">07 / 08 · впереди</p>
+          <h2>Наши<br /><em>маленькие мечты.</em></h2>
+          <p>Отметим то, что обязательно сделаем вместе. Даже самые простые желания с тобой становятся особенными.</p>
         </div>
         <div>
           <div className="plans-list">
@@ -360,6 +359,24 @@ export default function Home() {
         </div>
       </section>
 
+      {/* НОВЫЙ 8-Й ПУНКТ С ОЧЕНЬ МИЛЫМИ СЛОВАМИ */}
+      <section className="letter-section" style={{ marginTop: '4rem' }}>
+        <div className="section-side"><span>08</span><span className="side-rule" /></div>
+        <div className="letter-content" style={{ textAlign: 'center', maxWidth: '650px', margin: '0 auto' }}>
+          <p className="eyebrow">08 / 08 · моё обещание</p>
+          <h2>Я обещаю<br /><em>беречь тебя.</em></h2>
+          <p style={{ marginTop: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: 'inherit', opacity: 0.9 }}>
+            Я не идеален, но я обещаю каждый день стараться быть для тебя лучшим. 
+            Обещаю слушать, поддерживать, смеяться над твоими шутками и крепко держать за руку, даже когда страшно. 
+            Ты — моё самое большое вдохновение и моё тихое, уютное счастье. 
+            Я буду любить тебя сегодня, завтра и всегда.
+          </p>
+          <div className="signature" style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
+            Бесконечно твой <span>♥</span>
+          </div>
+        </div>
+      </section>
+
       {galleryOpen !== null && (
         <div className="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" onClick={() => setGalleryOpen(null)}>
           <button className="lightbox-close" onClick={() => setGalleryOpen(null)} aria-label="Закрыть"><X size={22} /></button>
@@ -369,8 +386,8 @@ export default function Home() {
       )}
 
       <footer className="site-footer">
-        <span>сделано для одного особенного человека</span>
-        <span>три месяца — только начало <b>♡</b></span>
+        <span>сделано с любовью, только для тебя</span>
+        <span>три месяца — и это только начало нашей вечности <b>♡</b></span>
       </footer>
     </main>
   );
