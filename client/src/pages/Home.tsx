@@ -5,6 +5,7 @@ import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
 const heroImage =  "/waxi3/img/1.png";
 const flowerImage = "/waxi3/img/1.jpg";
 const markImage =  "/waxi3/img/2.png";
+
 const heroSlides = [
   {
     src: "/waxi3/img/1.png",
@@ -21,13 +22,6 @@ const heroSlides = [
     alt: "Наш совместный момент",
     caption: "Только наши воспоминания",
   },
-];
-
-// Список всех ваших песен
-const playlist = [
-  { src: "/waxi3/audio/song.mp3", title: "Мелодия 1" },
-  { src: "/waxi3/audio/song1.mp3", title: "Мелодия 2" },
-  { src: "/waxi3/audio/song2.mp3", title: "Мелодия 3" },
 ];
 
 const relationshipStart = new Date("2026-06-04T12:00:00");
@@ -70,9 +64,17 @@ export default function Home() {
     try { return JSON.parse(localStorage.getItem("love-photo-notes") || "[]"); } catch { return []; }
   });
   const [confetti, setConfetti] = useState(false);
-  const [currentTrack, setCurrentTrack] = useState(0);
-  
+
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Плейлист из 3 песен
+  const playlist = [
+    { src: "/waxi3/audio/song.mp3", title: "Мелодия 1" },
+    { src: "/waxi3/audio/song1.mp3", title: "Мелодия 2" },
+    { src: "/waxi3/audio/song2.mp3", title: "Мелодия 3" },
+  ];
+
+  const [currentTrack, setCurrentTrack] = useState(0);
 
   useEffect(() => {
     document.body.classList.toggle("pastel-theme", theme === "pastel");
@@ -147,6 +149,17 @@ export default function Home() {
     }, 100);
   };
 
+  const handleTrackEnd = () => {
+    const nextTrack = (currentTrack + 1) % playlist.length;
+    setCurrentTrack(nextTrack);
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     const handleFirstInteraction = () => {
       if (audioRef.current && !isPlaying) {
@@ -156,10 +169,10 @@ export default function Home() {
       window.removeEventListener("pointerdown", handleFirstInteraction);
       window.removeEventListener("touchstart", handleFirstInteraction);
     };
-    
+
     window.addEventListener("pointerdown", handleFirstInteraction, { once: true });
     window.addEventListener("touchstart", handleFirstInteraction, { once: true });
-    
+
     return () => {
       window.removeEventListener("pointerdown", handleFirstInteraction);
       window.removeEventListener("touchstart", handleFirstInteraction);
@@ -173,23 +186,17 @@ export default function Home() {
 
   return (
     <main className="love-page">
-      <audio 
-        ref={audioRef} 
-        src={playlist[currentTrack].src} 
-        loop 
+      <audio
+        ref={audioRef}
+        src={playlist[currentTrack].src}
+        loop={false}
         preload="auto"
-        onEnded={() => {
-          const nextTrack = (currentTrack + 1) % playlist.length;
-          setCurrentTrack(nextTrack);
-          if (isPlaying && audioRef.current) {
-            audioRef.current.play();
-          }
-        }}
+        onEnded={handleTrackEnd}
       />
 
       {theme === "evening" && <div className="starfield" aria-hidden="true">{Array.from({ length: 48 }).map((_, i) => <i key={i} style={{ left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animationDelay: `${(i % 11) * 180}ms`, animationDuration: `${2.4 + (i % 5) * .7}s` }} />)}</div>}
       {confetti && <div className="confetti-layer" aria-hidden="true">{Array.from({ length: 34 }).map((_, i) => <i key={i} style={{ left: `${(i * 31) % 100}%`, animationDelay: `${(i % 9) * 70}ms`, background: i % 2 ? "#8f3d4b" : "#d7a28f" }} />)}</div>}
-      
+
       <header className="site-header">
         <a className="brand-mark" href="#top" aria-label="На главную"><img src={markImage} alt="" /><span>для двоих</span></a>
         <p className="header-note">личное письмо · 04.09.2026</p>
@@ -291,7 +298,6 @@ export default function Home() {
             <span className="time">{isPlaying ? "музыка играет" : "нажми для музыки"}</span>
             <Volume2 size={16} strokeWidth={1.5} />
           </div>
-          {/* Кнопки выбора трека */}
           <div className="playlist" style={{ marginTop: '15px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
             {playlist.map((track, index) => (
               <button
@@ -361,7 +367,7 @@ export default function Home() {
           <p>{gallery[galleryOpen].caption}</p>
         </div>
       )}
-      
+
       <footer className="site-footer">
         <span>сделано для одного особенного человека</span>
         <span>три месяца — только начало <b>♡</b></span>
