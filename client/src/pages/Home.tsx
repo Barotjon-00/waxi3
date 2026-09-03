@@ -346,17 +346,19 @@ export default function Home() {
           onClick={() => setSecretOpen(!secretOpen)} 
           aria-expanded={secretOpen}
           aria-label={secretOpen ? "Закрыть письмо" : "Открыть письмо"}
-          style={{
-            cursor: 'pointer',
-            transition: 'transform 0.6s ease',
-            transform: secretOpen ? 'rotateX(180deg)' : 'rotateX(0deg)'
-          }}
         >
-          <span className="envelope-flap" />
+          <span className="envelope-flap" style={{
+            transformOrigin: 'top',
+            transform: secretOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
+            transition: 'transform 0.6s ease',
+            zIndex: secretOpen ? 1 : 3
+          }} />
           <span className="envelope-paper" style={{
             opacity: secretOpen ? 1 : 0,
-            transform: secretOpen ? 'translateY(0)' : 'translateY(20px)',
-            transition: 'all 0.5s ease 0.2s'
+            transform: secretOpen ? 'translateY(-40px)' : 'translateY(0)',
+            transition: 'all 0.5s ease 0.3s',
+            zIndex: 2,
+            position: 'relative'
           }}>
             Ты — моё самое красивое совпадение во всей вселенной.<br />
             <small style={{ marginTop: '1rem', display: 'block', fontSize: '0.95rem' }}>
@@ -364,10 +366,12 @@ export default function Home() {
               И буду любить всегда. Навсегда твой. ♥
             </small>
           </span>
-          <span className="envelope-front" />
+          <span className="envelope-front" style={{ zIndex: 4, position: 'relative' }} />
           <span className="envelope-seal" style={{
             opacity: secretOpen ? 0 : 1,
-            transition: 'opacity 0.3s ease'
+            transition: 'opacity 0.3s ease',
+            zIndex: 5,
+            position: 'relative'
           }}>
             ♡
           </span>
