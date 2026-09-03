@@ -355,7 +355,9 @@ export default function Home() {
           }} />
           <span className="envelope-paper" style={{
             opacity: secretOpen ? 1 : 0,
-            transform: secretOpen ? 'translateY(-40px)' : 'translateY(0)',
+            transform: secretOpen 
+              ? 'translateY(-40px) rotate(0deg)' 
+              : 'translateY(0) rotate(0deg)',
             transition: 'all 0.5s ease 0.3s',
             zIndex: 2,
             position: 'relative'
