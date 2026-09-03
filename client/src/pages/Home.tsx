@@ -1,10 +1,10 @@
 /* Design philosophy: "Тёплая плёнка" — romantic editorial, analog texture, asymmetry, and quiet cherry-wine interactions. */
 import { useEffect, useRef, useState } from "react";
-import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
+import { Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
 
-const heroImage =  "/waxi3/img/1.png";
+const heroImage = "/waxi3/img/1.png";
 const flowerImage = "/waxi3/img/1.jpg";
-const markImage =  "/waxi3/img/2.png";
+const markImage = "/waxi3/img/2.png";
 
 const heroSlides = [
   {
@@ -13,7 +13,7 @@ const heroSlides = [
     caption: "Наш момент",
   },
   {
-   src: "/waxi3/img/2.png",
+    src: "/waxi3/img/2.png",
     alt: "Пара идёт навстречу друг другу",
     caption: "Всегда навстречу",
   },
@@ -31,13 +31,6 @@ const gallery = [
   { src: "/waxi3/img/4.jpg", alt: "Розовые цветы", caption: "маленькие радости" },
 ];
 const defaultPlans = ["Устроить романтический ужин", "Встретить вместе рассвет", "Сходить на концерт", "Поехать в небольшое путешествие"];
-
-const moments = [
-  { date: "04.06", label: "первая встреча", text: "День, с которого моя жизнь стала намного ярче." },
-  { date: "04.07", label: "первый месяц", text: "Когда обычные дни начали казаться настоящим праздником." },
-  { date: "04.08", label: "второй месяц", text: "Когда у нас появились свои слова, шутки и маленькие ритуалы." },
-  { date: "сегодня", label: "три месяца", text: "И мне всё ещё хочется узнавать тебя каждый день заново." },
-];
 
 function daysTogether() {
   return Math.max(1, Math.floor((Date.now() - relationshipStart.getTime()) / 86400000));
@@ -254,11 +247,11 @@ export default function Home() {
           <p className="counter-number" style={{ fontSize: '6rem', lineHeight: '1', margin: '1rem 0' }}>{days}</p>
           <p className="counter-label" style={{ fontSize: '1.1rem', opacity: 0.8 }}>дней настоящего счастья</p>
         </div>
-        <button 
-          className="confetti-button" 
+        <button
+          className="confetti-button"
           onClick={launchConfetti}
-          style={{ 
-            margin: '0 auto', 
+          style={{
+            margin: '0 auto',
             display: 'inline-flex',
             alignItems: 'center',
             gap: '8px',
@@ -335,48 +328,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/*
+        Конверт: вся анимация открытия/закрытия (поворот клапана, подъём письма,
+        исчезновение печати) уже полностью описана в CSS через класс
+        `.secret-section.is-open`. Раньше здесь были ещё и инлайн-стили,
+        которые задавали свои (другие) значения transform/z-index — из-за более
+        высокого приоритета инлайн-стилей они "перебивали" правильные значения
+        из CSS и ломали вид конверта. Теперь состояние управляется только
+        одним классом `is-open` на секции — конфликтов больше нет.
+      */}
       <section className={`secret-section ${secretOpen ? "is-open" : ""}`}>
         <div className="secret-copy">
           <p className="eyebrow">06 / 08 · только для тебя</p>
           <h2>Здесь спрятано<br /><em>моё сердце.</em></h2>
           <p>Нажми на конверт, чтобы прочитать то, что я ношу в душе каждый день.</p>
         </div>
-        <button 
-          className="envelope" 
-          onClick={() => setSecretOpen(!secretOpen)} 
+        <button
+          className="envelope"
+          onClick={() => setSecretOpen(!secretOpen)}
           aria-expanded={secretOpen}
           aria-label={secretOpen ? "Закрыть письмо" : "Открыть письмо"}
         >
-          <span className="envelope-flap" style={{
-            transformOrigin: 'top',
-            transform: secretOpen ? 'rotateX(180deg)' : 'rotateX(0deg)',
-            transition: 'transform 0.6s ease',
-            zIndex: secretOpen ? 1 : 3
-          }} />
-          <span className="envelope-paper" style={{
-            opacity: secretOpen ? 1 : 0,
-            transform: secretOpen 
-              ? 'translateY(-40px) rotate(0deg)' 
-              : 'translateY(0) rotate(0deg)',
-            transition: 'all 0.5s ease 0.3s',
-            zIndex: 2,
-            position: 'relative'
-          }}>
+          <span className="envelope-flap" />
+          <span className="envelope-paper">
             Ты — моё самое красивое совпадение во всей вселенной.<br />
-            <small style={{ marginTop: '1rem', display: 'block', fontSize: '0.95rem' }}>
+            <small>
               Я люблю тебя больше, чем можно выразить словами.<br />
               И буду любить всегда. Навсегда твой. ♥
             </small>
           </span>
-          <span className="envelope-front" style={{ zIndex: 4, position: 'relative' }} />
-          <span className="envelope-seal" style={{
-            opacity: secretOpen ? 0 : 1,
-            transition: 'opacity 0.3s ease',
-            zIndex: 5,
-            position: 'relative'
-          }}>
-            ♡
-          </span>
+          <span className="envelope-front" />
+          <span className="envelope-seal">♡</span>
         </button>
       </section>
 
@@ -409,9 +391,9 @@ export default function Home() {
           <p className="eyebrow">08 / 08 · моё обещание</p>
           <h2>Я обещаю<br /><em>беречь тебя.</em></h2>
           <p style={{ marginTop: '1.5rem', lineHeight: '1.8', fontSize: '1.1rem', color: 'inherit', opacity: 0.9 }}>
-            Я не идеален, но я обещаю каждый день стараться быть для тебя лучшим. 
-            Обещаю слушать, поддерживать, смеяться над твоими шутками и крепко держать за руку, даже когда страшно. 
-            Ты — моё самое большое вдохновение и моё тихое, уютное счастье. 
+            Я не идеален, но я обещаю каждый день стараться быть для тебя лучшим.
+            Обещаю слушать, поддерживать, смеяться над твоими шутками и крепко держать за руку, даже когда страшно.
+            Ты — моё самое большое вдохновение и моё тихое, уютное счастье.
             Я буду любить тебя сегодня, завтра и всегда.
           </p>
           <div className="signature" style={{ marginTop: '2rem', fontSize: '1.2rem' }}>
