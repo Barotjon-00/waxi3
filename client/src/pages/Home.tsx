@@ -1,11 +1,10 @@
-/* Design philosophy: “Тёплая плёнка” — romantic editorial, analog texture, asymmetry, and quiet cherry-wine interactions. */
+/* Design philosophy: "Тёплая плёнка" — romantic editorial, analog texture, asymmetry, and quiet cherry-wine interactions. */
 import { useEffect, useRef, useState } from "react";
 import { Heart, Music2, Pause, Play, Sparkles, Volume2, X } from "lucide-react";
 
 const heroImage =  "/waxi3/img/1.png";
 const flowerImage = "/waxi3/img/1.jpg";
 const markImage =  "/waxi3/img/2.png";
-
 const heroSlides = [
   {
     src: "/waxi3/img/1.png",
@@ -22,6 +21,13 @@ const heroSlides = [
     alt: "Наш совместный момент",
     caption: "Только наши воспоминания",
   },
+];
+
+// Список всех ваших песен
+const playlist = [
+  { src: "/waxi3/audio/song.mp3", title: "Мелодия 1" },
+  { src: "/waxi3/audio/song1.mp3", title: "Мелодия 2" },
+  { src: "/waxi3/audio/song2.mp3", title: "Мелодия 3" },
 ];
 
 const relationshipStart = new Date("2026-06-04T12:00:00");
@@ -64,8 +70,8 @@ export default function Home() {
     try { return JSON.parse(localStorage.getItem("love-photo-notes") || "[]"); } catch { return []; }
   });
   const [confetti, setConfetti] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(0);
   
-  // Изменено: теперь это ссылка на HTML5 аудио элемент
   const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
@@ -120,20 +126,27 @@ export default function Home() {
     return () => window.clearInterval(timer);
   }, []);
 
-  // Новая простая функция для включения/выключения музыки
   const toggleMusic = () => {
     if (!audioRef.current) return;
     if (isPlaying) {
       audioRef.current.pause();
     } else {
-      audioRef.current.play().catch(() => {
-        // Браузеры могут блокировать автовоспроизведение, это нормально
-      });
+      audioRef.current.play().catch(() => {});
     }
     setIsPlaying(!isPlaying);
   };
 
-  // Автовоспроизведение при первом касании/клике пользователя
+  const changeTrack = (index: number) => {
+    setCurrentTrack(index);
+    setIsPlaying(false);
+    setTimeout(() => {
+      if (audioRef.current) {
+        audioRef.current.play();
+        setIsPlaying(true);
+      }
+    }, 100);
+  };
+
   useEffect(() => {
     const handleFirstInteraction = () => {
       if (audioRef.current && !isPlaying) {
@@ -160,8 +173,19 @@ export default function Home() {
 
   return (
     <main className="love-page">
-      {/* Аудио-элемент для вашей музыки. Положите файл music.mp3 в папку client/public/audio/ */}
-      <audio ref={audioRef} src="/waxi3/audio/song.mp3" loop preload="auto" />
+      <audio 
+        ref={audioRef} 
+        src={playlist[currentTrack].src} 
+        loop 
+        preload="auto"
+        onEnded={() => {
+          const nextTrack = (currentTrack + 1) % playlist.length;
+          setCurrentTrack(nextTrack);
+          if (isPlaying && audioRef.current) {
+            audioRef.current.play();
+          }
+        }}
+      />
 
       {theme === "evening" && <div className="starfield" aria-hidden="true">{Array.from({ length: 48 }).map((_, i) => <i key={i} style={{ left: `${(i * 37) % 100}%`, top: `${(i * 53) % 100}%`, animationDelay: `${(i % 11) * 180}ms`, animationDuration: `${2.4 + (i % 5) * .7}s` }} />)}</div>}
       {confetti && <div className="confetti-layer" aria-hidden="true">{Array.from({ length: 34 }).map((_, i) => <i key={i} style={{ left: `${(i * 31) % 100}%`, animationDelay: `${(i % 9) * 70}ms`, background: i % 2 ? "#8f3d4b" : "#d7a28f" }} />)}</div>}
@@ -254,19 +278,40 @@ export default function Home() {
             <div className={`vinyl ${isPlaying ? "spinning" : ""}`}><span /></div>
             <div>
               <p className="player-label">сейчас звучит</p>
-              <p className="player-title">мелодия для двоих</p>
+              <p className="player-title">{playlist[currentTrack].title}</p>
             </div>
           </div>
           <div className="waveform" aria-hidden="true">
             {Array.from({ length: 28 }).map((_, index) => <i key={index} style={{ height: `${18 + ((index * 17) % 38)}px` }} />)}
           </div>
           <div className="player-controls">
-            {/* Изменено: теперь вызывает toggleMusic */}
             <button className="play-button" onClick={toggleMusic} aria-label={isPlaying ? "Пауза" : "Воспроизвести"}>
               {isPlaying ? <Pause size={18} fill="currentColor" /> : <Play size={18} fill="currentColor" />}
             </button>
             <span className="time">{isPlaying ? "музыка играет" : "нажми для музыки"}</span>
             <Volume2 size={16} strokeWidth={1.5} />
+          </div>
+          {/* Кнопки выбора трека */}
+          <div className="playlist" style={{ marginTop: '15px', display: 'flex', gap: '10px', justifyContent: 'center' }}>
+            {playlist.map((track, index) => (
+              <button
+                key={track.src}
+                onClick={() => changeTrack(index)}
+                style={{
+                  padding: '5px 12px',
+                  borderRadius: '15px',
+                  border: currentTrack === index ? '1px solid #8f3d4b' : '1px solid #d7a28f',
+                  background: currentTrack === index ? '#8f3d4b' : 'transparent',
+                  color: currentTrack === index ? '#fff' : '#8f3d4b',
+                  cursor: 'pointer',
+                  fontSize: '12px',
+                  transition: 'all 0.3s'
+                }}
+                aria-label={`Трек ${index + 1}`}
+              >
+                {index + 1}
+              </button>
+            ))}
           </div>
           <p className="autoplay-note"><Music2 size={13} /> мягкий автозапуск включён</p>
         </div>
